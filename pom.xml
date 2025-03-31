@@ -11,6 +11,7 @@
     <groupId>com.acheiali</groupId>
     <artifactId>blog</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>blog</name>
     <description>blog</description>
     <url/>
@@ -20,6 +21,9 @@
     <developers>
         <developer/>
     </developers>
+    <modules>
+        <module>domain</module>
+    </modules>
     <scm>
         <connection/>
         <developerConnection/>
