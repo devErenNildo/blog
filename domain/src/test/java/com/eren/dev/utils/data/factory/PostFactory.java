@@ -24,6 +24,10 @@ public class PostFactory {
         return Post.newPost(faker.lorem().characters(4), faker.lorem().paragraph(), true, faker.name().fullName());
     }
 
+    public static Post newInvalidPostMaxLengthTitle(){
+        return Post.newPost(faker.lorem().characters(256), faker.lorem().paragraph(), true, faker.name().fullName());
+    }
+
 
     //content-----------------------------------
     public static Post newInvalidPostNullContent(){
@@ -36,6 +40,10 @@ public class PostFactory {
 
     public static Post newInvalidPostMinLengthContent(){
         return Post.newPost(faker.book().title(), faker.lorem().characters(4), true, faker.name().fullName());
+    }
+
+    public static Post newInvalidPostMaxLengthContent(){
+        return Post.newPost(faker.book().title(), faker.lorem().characters(10001), true, faker.name().fullName());
     }
 
 

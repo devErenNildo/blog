@@ -105,5 +105,33 @@ public class PostTest extends UnitTest {
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
     }
 
+    @Test
+    public void givenAnInvalidTitleLengthMoreThan255_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'title' deve ter no máximo 255 caracteres";
+
+        final var actualPost = PostFactory.newInvalidPostMaxLengthTitle();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
+    @Test
+    public void givenAnInvalidContentLengthMoreThan255_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'content' deve ter no máximo 255 caracteres";
+
+        final var actualPost = PostFactory.newInvalidPostMaxLengthContent();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
 
 }
