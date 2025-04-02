@@ -48,8 +48,6 @@ public class PostValidator extends Validator {
             return;
         }
 
-
-
         if(content == null) {
             this.validationHandler().append(new Error("'content' não pode ser nulo"));
             return;
@@ -60,7 +58,7 @@ public class PostValidator extends Validator {
             return;
         }
 
-        final int lenghtContent = title.trim().length();
+        final int lenghtContent = content.trim().length();
         if (lenghtContent < TITLE_MIN_LENGTH){
             this.validationHandler().append(new Error("'content' deve ter no mínimo 5 caracteres"));
             return;

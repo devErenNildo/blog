@@ -16,8 +16,26 @@ public class PostFactory {
         return Post.newPost(null, faker.lorem().paragraph(), true, faker.name().fullName());
     }
 
+    public static Post newInvalidPostEmptyTitle(){
+        return Post.newPost("", faker.lorem().paragraph(), true, faker.name().fullName());
+    }
+
+    public static Post newInvalidPostMinLengthTitle(){
+        return Post.newPost(faker.lorem().characters(4), faker.lorem().paragraph(), true, faker.name().fullName());
+    }
+
+
+    //content-----------------------------------
     public static Post newInvalidPostNullContent(){
         return Post.newPost(faker.book().title(), null, true, faker.name().fullName());
+    }
+
+    public static Post newInvalidPostEmptyContent(){
+        return Post.newPost(faker.book().title(), "", true, faker.name().fullName());
+    }
+
+    public static Post newInvalidPostMinLengthContent(){
+        return Post.newPost(faker.book().title(), faker.lorem().characters(4), true, faker.name().fullName());
     }
 
 

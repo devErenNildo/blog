@@ -48,4 +48,62 @@ public class PostTest extends UnitTest {
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
     }
+
+    @Test
+    public void givenAnInvalidEmptyTitle_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'title' não pode ser vazio";
+
+        final var actualPost = PostFactory.newInvalidPostEmptyTitle();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
+    @Test
+    public void givenAnInvalidEmptyContent_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'content' não pode ser vazio";
+
+        final var actualPost = PostFactory.newInvalidPostEmptyContent();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
+    @Test
+    public void givenAnInvalidTitleLengthLessThan5_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'title' deve ter no mínimo 5 caracteres";
+
+        final var actualPost = PostFactory.newInvalidPostMinLengthTitle();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
+    @Test
+    public void givenAnInvalidContentLengthLessThan5_whenCallNewPostAndValidate_thenShouldReceiverError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'content' deve ter no mínimo 5 caracteres";
+
+        final var actualPost = PostFactory.newInvalidPostMinLengthContent();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
+
+
 }
