@@ -1,4 +1,4 @@
-package com.eren.dev.data.factory;
+package com.eren.dev.utils.data.factory;
 
 import com.eren.dev.post.Post;
 import net.datafaker.Faker;
@@ -10,6 +10,10 @@ public class PostFactory {
 
     public static Post newValidFakerPost(){
         return validPost();
+    }
+
+    public static Post newInvalidPostNullTitle(){
+        return Post.newPost(null, faker.lorem().paragraph(), true, faker.name().fullName());
     }
 
 
