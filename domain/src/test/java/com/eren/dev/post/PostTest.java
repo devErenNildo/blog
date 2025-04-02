@@ -34,4 +34,18 @@ public class PostTest extends UnitTest {
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
     }
+
+    @Test
+    public void givenAnInvalidNullContent_whenCallNewPostAnValidate_thenShouldReceiveError(){
+        final var expectedErrorCount = 1;
+        final var expectedErrorMessage = "'content' não pode ser nulo";
+
+        final var actualPost = PostFactory.newInvalidPostNullContent();
+
+        final var actualException =
+                Assertions.assertThrows(DomainException.class, () -> actualPost.validate(new ThrowsValidationHandler()));
+
+        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().getFirst().message());
+    }
 }

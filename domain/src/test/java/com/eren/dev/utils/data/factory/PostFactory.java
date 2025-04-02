@@ -16,6 +16,10 @@ public class PostFactory {
         return Post.newPost(null, faker.lorem().paragraph(), true, faker.name().fullName());
     }
 
+    public static Post newInvalidPostNullContent(){
+        return Post.newPost(faker.book().title(), null, true, faker.name().fullName());
+    }
+
 
     private static Post validPost(){
         Post post = Post.newPost(faker.book().title(), faker.lorem().paragraph(), true, faker.name().fullName());
