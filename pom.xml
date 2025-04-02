@@ -23,6 +23,7 @@
     </developers>
     <modules>
         <module>domain</module>
+        <module>application</module>
     </modules>
     <scm>
         <connection/>
