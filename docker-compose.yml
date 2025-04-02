@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: blog
+    restart: always
+    environment:
+      POSTGRES_DB: root
+      POSTGRES_USER: user1
+      POSTGRES_PASSWORD: senha123
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
