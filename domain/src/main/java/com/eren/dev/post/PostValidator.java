@@ -59,13 +59,13 @@ public class PostValidator extends Validator {
         }
 
         final int lenghtContent = content.trim().length();
-        if (lenghtContent < TITLE_MIN_LENGTH){
+        if (lenghtContent < CONTENT_MIN_LENGTH){
             this.validationHandler().append(new Error("'content' deve ter no mínimo 5 caracteres"));
             return;
         }
 
-        if (lenghtContent > TITLE_MAX_LENGTH){
-            this.validationHandler().append(new Error("'content' deve ter no máximo 255 caracteres"));
+        if (lenghtContent > CONTENT_MAX_LENGTH){
+            this.validationHandler().append(new Error("'content' deve ter no máximo 10000 caracteres"));
         }
     }
 }

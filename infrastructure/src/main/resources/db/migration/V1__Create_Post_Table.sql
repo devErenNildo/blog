@@ -1,0 +1,10 @@
+CREATE TABLE post (
+    id UUID PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    content TEXT NOT NULL,
+    active BOOLEAN NOT NULL DEFAULT true,
+    author VARCHAR(150) NOT NULL,
+    created_at TIMESTAMP(6) WITH TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(6) WITH TIME ZONE NOT NULL,
+    deleted_at TIMESTAMP(6) WITH TIME ZONE
+);
